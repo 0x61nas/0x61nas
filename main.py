@@ -157,7 +157,7 @@ def main():
         contin=True,
     )
     t.save_frame("screenshot.png")
-    t.gen_text("doas: Authhentication faild", t.curr_row)
+    t.gen_text("doas: Authentication faild", t.curr_row)
     t.gen_prompt(t.curr_row)
     t.gen_text("", t.curr_row, count=80, contin=True)
 
