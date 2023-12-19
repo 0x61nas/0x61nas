@@ -11,16 +11,18 @@ FONT_FILE_MONA = "./fonts/Inversionz.otf"
 
 
 def main():
-    t = gifos.Terminal(750, 500, 15, 15, FONT_FILE_BITMAP, 15)
+    t = gifos.Terminal(800, 500, 15, 15, FONT_FILE_BITMAP, 15)
     t.set_fps(15)
-    t.set_prompt("\x1b[0;91manas\x1b[0m@\x1b[0;93mgifos ~> \x1b[0m")
+    t.set_prompt("\x1b[0;91manas\x1b[0m@\x1b[0;93mlife ~> \x1b[0m")
 
+    # one God day is equal 1000 human year.
+    copyright_year = datetime.now().date().year / (1000 * 365.25)
     t.gen_text("", 1, count=20)
     t.toggle_show_cursor(False)
-    t.gen_text("GIF_OS Modular BIOS v1.0.11", 1)
-    t.gen_text("Copyright (C) 2023, \x1b[31mX0rzAvi Softwares Inc.\x1b[0m", 2)
+    t.gen_text("OS Modular BIOS v1.0.25", 1)
+    t.gen_text(f"Copyright (C) {copyright_year}, \x1b[31mGod Inc.\x1b[0m", 2)
     t.gen_text("\x1b[94mGitHub Profile ReadMe Terminal, Rev 1011\x1b[0m", 4)
-    t.gen_text("Krypton(tm) GIFCPU - 250Hz", 6)
+    t.gen_text("Krypton(tm) CPU - 250Hz", 6)
     t.gen_text(
         "Press \x1b[94mDEL\x1b[0m to enter SETUP, \x1b[94mESC\x1b[0m to cancel Memory Test",
         t.num_rows,
@@ -43,7 +45,7 @@ def main():
     t.gen_text("\x1b[96m", 1, count=0, contin=True)  # buffer to be removed
     t.set_font(FONT_FILE_LOGO, 66)
     # t.toggle_show_cursor(True)
-    os_logo_text = "GIF OS"
+    os_logo_text = "OS"
     mid_row = (t.num_rows + 1) // 2
     mid_col = (t.num_cols - len(os_logo_text) + 1) // 2
     effect_lines = gifos.effects.text_scramble_effect_lines(
@@ -57,7 +59,7 @@ def main():
     t.clear_frame()
     t.clone_frame(5)
     t.toggle_show_cursor(False)
-    t.gen_text("\x1b[93mGIF OS v1.0.11 (tty1)\x1b[0m", 1, count=5)
+    t.gen_text("\x1b[93mOS v1.0.25 (tty1)\x1b[0m", 1, count=5)
     t.gen_text("login: ", 3, count=5)
     t.toggle_show_cursor(True)
     t.gen_typing_text("anas", 3, contin=True)
@@ -79,7 +81,7 @@ def main():
     t.delete_row(7, prompt_col)  # simulate syntax highlighting
     t.gen_text("\x1b[92mclear\x1b[0m", 7, count=3, contin=True)
 
-    ignore_repos = ["dotfiles"]
+    ignore_repos = ["dotfiles", "0x61nas.github.io", "obsidian"]
     git_user_details = gifos.utils.fetch_github_stats("0x61nas", ignore_repos)
     user_age = gifos.utils.calc_age(26, 3, 2003)
     t.clear_frame()
@@ -96,7 +98,7 @@ def main():
     \x1b[30;101mContact:\x1b[0m
     --------------
     \x1b[96mEmail:      \x1b[93m0x61nas@gmail.com\x1b[0m
-    \x1b[96mLinkedIn:   \x1b[93manas-elgarhy\x1b[0m
+    \x1b[96mDiscord:    \x1b[93m@0x61nas\x1b[0m
     
     \x1b[30;101mGitHub Stats:\x1b[0m
     --------------
@@ -150,11 +152,13 @@ def main():
     t.gen_text(user_details_lines, 2, 35, count=5, contin=True)
     t.gen_prompt(t.curr_row)
     t.gen_typing_text(
-        "\x1b[92m# Have a nice day kind stranger :D Thanks for stopping by!",
+        "\x1b[92mdoas pkill -f $(whoami)",
         t.curr_row,
         contin=True,
     )
     t.save_frame("fetch_details.png")
+    t.gen_text("doas: Authhentication faild", t.curr_row)
+    t.gen_prompt(t.curr_row)
     t.gen_text("", t.curr_row, count=80, contin=True)
 
     t.gen_gif()
