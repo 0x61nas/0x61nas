@@ -151,13 +151,51 @@ def main():
     t.toggle_show_cursor(True)
     t.gen_text(user_details_lines, 2, 35, count=5, contin=True)
     t.gen_prompt(t.curr_row)
+    prompt_col = t.curr_col
     t.gen_typing_text(
-        "\x1b[92mdoas pkill -f $(whoami)",
+        "\x1b[91mdoa",
         t.curr_row,
         contin=True,
     )
+    t.delete_row(t.curr_row, prompt_col)
+    t.gen_text(
+        "\x1b[92mdoas",
+        t.curr_row,
+        count=3,
+        contin=True,
+    )
+    t.gen_typing_text(
+        "\x1b[91m pkil\x1b[0m",
+        t.curr_row,
+        contin=True,
+    )
+    t.delete_row(t.curr_row, prompt_col)
+    t.gen_text(
+        "\x1b[92mdoas pkill\x1b[0m",
+        t.curr_row,
+        contin=True,
+    )
+    t.gen_typing_text("\x1b[91m -\x1b[0m", t.curr_row, contin=True)
+    t.delete_row(t.curr_row, prompt_col)
+    t.gen_text(
+        "\x1b[92mdoas pkill -f\x1b[0m",
+        t.curr_row,
+        contin=True,
+    )
+    t.gen_typing_text(
+        "\x1b[91m $(whoami\x1b[0m",
+        t.curr_row,
+        contin=True,
+    )
+    t.delete_row(t.curr_row, prompt_col)
+    t.gen_text(
+        "\x1b[92mdoas pkill -f $(whoami)\x1b[0m",
+        t.curr_row,
+        contin=True,
+    )
+
     t.save_frame("screenshot.png")
-    t.gen_text("doas: Authentication faild", t.curr_row)
+    t.gen_text("\x1b[31m doas: Authentication faild\x1b[0m", t.curr_row)
     t.gen_prompt(t.curr_row)
     t.gen_text("", t.curr_row, count=80, contin=True)
 
