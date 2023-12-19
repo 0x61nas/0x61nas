@@ -44,6 +44,6 @@ jobs:
           # Create a new empty branch with the specified name
           git checkout --orphan "$branch_name"
           git rm -rf .
-          git add output.gif
+          git add output.gif screenshot.png
           git -c "user.name=bot" -c "user.email=bot@github.com" commit -m "Automatically updated on $(date)"
           git push -u -f origin $branch_name
